@@ -22,18 +22,30 @@ public class LibraryService {
     @Autowired
     LibraryRepo libraryRepo;
 
+    
     public String register(UserDto userDto){
        return userClient.addUser(userDto);
     }
+    
     public UserDto getUserByUsername(String username){
         return userClient.getUserByUsername(username);
     }
+    
     public List<UserDto> getUsers(){
         return  userClient.getUsers();
     }
-    public List<BookEntity> getBooks(){return bookClient.get();}
-    public BookEntity getBookById(int id){return bookClient.getById(id);}
-    public String addBook(BookEntity book){return bookClient.add(book);}
+    
+    public List<BookEntity> getBooks(){
+        return bookClient.get();
+    }
+    
+    public BookEntity getBookById(int id){
+        return bookClient.getById(id);
+    }
+    
+    public String addBook(BookEntity book){
+        return bookClient.add(book);
+    }
 
     public String createAssociation(String username, int id) {
         Optional<UserDto> userDto = Optional.ofNullable(userClient.getUserByUsername(username));
